@@ -1,19 +1,12 @@
-import { useEffect } from "react";
 import "./App.css";
 
 //Components
-import ContainerToDo from "./components/ContainerToDo";
-
-import { getUsers } from "./services/crud";
+import UsersBox from "./components/UsersBox";
 
 function App() {
-  useEffect(() => {
-    getUsers();
-  }, []);
-
   return (
     <div className="App bg-very-dark-blue min-h-screen">
-      <ContainerToDo />
+      <UsersBox />
     </div>
   );
 }

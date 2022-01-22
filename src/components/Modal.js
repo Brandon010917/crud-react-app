@@ -1,21 +1,25 @@
-import { Fragment, useRef } from "react";
+//Tailwind
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 //Components
-import FormToDo from "./FormToDo";
+import UsersForm from "./Form/UsersForm";
 
-const Modal = ({ open, setOpen }) => {
-  const cancelButtonRef = useRef(null);
-
+const Modal = ({
+  isOpenModal,
+  setIsOpenModal,
+  onCreateOrUpdateUser,
+  editToDo,
+  setEditToDo,
+}) => {
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition.Root show={isOpenModal} as={Fragment}>
       <Dialog
         as="div"
         className="fixed z-10 inset-0 overflow-y-auto"
-        initialFocus={cancelButtonRef}
-        onClose={setOpen}
+        onClose={setIsOpenModal}
       >
-        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 modal-container">
+        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-10 text-center sm:block sm:p-0 background-modal">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -45,17 +49,21 @@ const Modal = ({ open, setOpen }) => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block align-bottom bg-very-dark-blue rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full modal">
-              <div className="bg-very-dark-blue px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-start">
-                  <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-light-grayish-blue-hover text-2xl leading-6"
-                    >
-                      Create ToDo
-                    </Dialog.Title>
-                    <FormToDo setOpen={setOpen} />
-                  </div>
+              <div className="bg-very-dark-blue p-4 sm:p-6 sm:pb-4">
+                <div className="mt-3 text-center sm:mt-0 sm:text-left">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-light-grayish-blue-hover text-2xl leading-6"
+                  >
+                    Create ToDo
+                  </Dialog.Title>
+                  {/* From para crear o editar un usuario */}
+                  <UsersForm
+                    setIsOpenModal={setIsOpenModal}
+                    onCreateOrUpdateUser={onCreateOrUpdateUser}
+                    editToDo={editToDo}
+                    setEditToDo={setEditToDo}
+                  />
                 </div>
               </div>
             </div>

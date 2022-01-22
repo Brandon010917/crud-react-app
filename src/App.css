@@ -1,3 +1,4 @@
+/* App */
 .App {
   position: relative;
   z-index: 0;
@@ -23,21 +24,38 @@
   }
 }
 
-/* ContainerToDo */
-.container-todo {
-  max-width: 640px;
-}
-
 /* Header */
 .title {
   letter-spacing: 8px;
 }
 
 /* Modal */
-.modal-container {
+.background-modal {
   background-color: #16172295;
 }
 
 .modal {
   min-width: 320px;
+}
+
+/* Message */
+.message {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% + 1rem);
+  bottom: 0;
+  height: 8px;
+  left: -8px;
+  background-color: #3a7bfd;
+  animation: borderBottom 7s ease 1;
+}
+
+@keyframes borderBottom {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }
