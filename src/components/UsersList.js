@@ -17,19 +17,19 @@ const UsersList = ({
                 <tr className="text-light-grayish-blue">
                   <th
                     scope="col"
-                    className="py-4 text-left text-xs font-bold  uppercase tracking-wider text-center"
+                    className="py-4 text-xs font-bold  uppercase tracking-wider text-center"
                   >
                     Name
                   </th>
                   <th
                     scope="col"
-                    className="py-4 px-2 text-left text-xs font-bold uppercase tracking-wider text-center"
+                    className="py-4 px-2 text-xs font-bold uppercase tracking-wider text-center"
                   >
                     Email
                   </th>
                   <th
                     scope="col"
-                    className="py-4 px-2 text-left text-xs font-bold uppercase tracking-wider text-center"
+                    className="py-4 px-2 text-xs font-bold uppercase tracking-wider text-center"
                   >
                     Birthday
                   </th>
