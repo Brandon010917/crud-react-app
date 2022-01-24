@@ -2,8 +2,8 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://users-crud1.herokuapp.com/";
 
-const create = async (todo) => {
-  const { data } = await axios.post("users/", todo);
+const create = async (user) => {
+  const { data } = await axios.post("users/", user);
 
   return data;
 };
@@ -14,8 +14,8 @@ const read = async () => {
   return data;
 };
 
-const update = async (todo) => {
-  const { data } = await axios.put(`/users/${todo.id}/`, todo);
+const update = async (user) => {
+  const { data } = await axios.put(`/users/${user.id}/`, user);
 
   return data;
 };

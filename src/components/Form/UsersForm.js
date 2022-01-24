@@ -10,14 +10,14 @@ import ErrorInputForm from "./ErrorInputForm";
 const UsersForm = ({
   setIsOpenModal,
   onCreateOrUpdateUser,
-  editToDo,
-  setEditToDo,
+  editUser,
+  setEditUser,
 }) => {
   useEffect(() => {
     return () => {
-      setEditToDo(null);
+      setEditUser(null);
     };
-  }, [setEditToDo]);
+  }, [setEditUser]);
 
   //React-hook-form
   const {
@@ -29,19 +29,17 @@ const UsersForm = ({
 
   //Functions
   const onSubmit = (user) => {
-    if (editToDo) {
-      //Editar User
-      onCreateOrUpdateUser({ ...user, id: editToDo.id });
-    } else {
-      //Crear user
-      onCreateOrUpdateUser(user);
-    }
+    onCreateOrUpdateUser(user);
     setIsOpenModal(false);
     reset();
   };
 
   //Const para que el valor maximo del input date sea el dia actual
   const today = new Date().toISOString().split("T")[0];
+
+  const handleClick = () => {
+    setIsOpenModal(false);
+  };
 
   return (
     <div className="mt-5 md:col-span-2">
@@ -68,7 +66,7 @@ const UsersForm = ({
                       value: /^([a-zA-Z\s]+)*$/,
                       message: "Only character",
                     },
-                    value: editToDo?.first_name,
+                    value: editUser?.first_name,
                   })}
                 />
                 {errors.first_name && (
@@ -95,7 +93,7 @@ const UsersForm = ({
                       value: /^([a-zA-Z\s]+)*$/,
                       message: "Only character",
                     },
-                    value: editToDo?.last_name,
+                    value: editUser?.last_name,
                   })}
                 />
                 {errors.last_name && (
@@ -119,7 +117,7 @@ const UsersForm = ({
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                       message: "Invalid email address",
                     },
-                    value: editToDo?.email,
+                    value: editUser?.email,
                   })}
                 />
                 {errors.email && (
@@ -143,7 +141,7 @@ const UsersForm = ({
                       message:
                         "Minimum eight characters, at least one letter and one number",
                     },
-                    value: editToDo?.password,
+                    value: editUser?.password,
                   })}
                 />
                 {errors.password && (
@@ -163,7 +161,7 @@ const UsersForm = ({
                   className="mt-1 block w-full shadow-sm text-sm rounded-md outline-none p-2 text-very-dark-blue"
                   {...register("birthday", {
                     required: true,
-                    value: editToDo?.birthday,
+                    value: editUser?.birthday,
                   })}
                 />
                 {errors.birthday && (
@@ -174,8 +172,8 @@ const UsersForm = ({
           </div>
           {/* Boton de cancerlar y de crear||actualizar */}
           <div className="px-4 py-2 text-right sm:px-2">
-            <ButtonForm handleClick={() => setIsOpenModal(false)} />
-            <ButtonForm editToDo={editToDo} />
+            <ButtonForm handleClick={handleClick} type="button" />
+            <ButtonForm editUser={editUser} type="submit" />
           </div>
         </div>
       </form>

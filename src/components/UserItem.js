@@ -28,7 +28,9 @@ const UserItem = ({ user, onDeleteUser, setEditUser, setIsOpenModal }) => {
           <button
             className="mr-2 hover:text-bright-blue transition-colors duration-300"
             // Retorno el objeto user mas el id para editarlo en el formulario
-            onClick={() => handleUpdate({ ...user, id })}
+            onClick={() => {
+              handleUpdate(user);
+            }}
           >
             <PencilIcon className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>

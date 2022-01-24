@@ -9,8 +9,8 @@ const Modal = ({
   isOpenModal,
   setIsOpenModal,
   onCreateOrUpdateUser,
-  editToDo,
-  setEditToDo,
+  editUser,
+  setEditUser,
 }) => {
   return (
     <Transition.Root show={isOpenModal} as={Fragment}>
@@ -55,14 +55,14 @@ const Modal = ({
                     as="h3"
                     className="text-light-grayish-blue-hover text-2xl leading-6"
                   >
-                    Create ToDo
+                    Create User
                   </Dialog.Title>
                   {/* From para crear o editar un usuario */}
                   <UsersForm
                     setIsOpenModal={setIsOpenModal}
                     onCreateOrUpdateUser={onCreateOrUpdateUser}
-                    editToDo={editToDo}
-                    setEditToDo={setEditToDo}
+                    editUser={editUser}
+                    setEditUser={setEditUser}
                   />
                 </div>
               </div>

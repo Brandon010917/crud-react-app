@@ -48,7 +48,7 @@
   height: 8px;
   left: -8px;
   background-color: #3a7bfd;
-  animation: borderBottom 7s ease 1;
+  animation: borderBottom 6s ease 1;
 }
 
 @keyframes borderBottom {

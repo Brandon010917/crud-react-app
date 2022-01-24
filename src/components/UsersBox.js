@@ -31,16 +31,14 @@ const UsersBox = () => {
   const HandleShowMessage = (msg) => {
     setShowMessage(true);
     setMessage(msg);
-
-    setTimeout(() => setShowMessage(false), 6000);
   };
 
   //Create or Update User
   const onCreateOrUpdateUser = (user) => {
     //Update
-    if (user.id) {
+    if (editUser) {
       const updateUser = async () => {
-        const res = await update(user);
+        const res = await update({ ...user, id: editUser.id });
 
         HandleShowMessage("updated");
         setUsersList(
